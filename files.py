@@ -17,3 +17,7 @@ print(xmen_file.read())
 
 xmen_file.close()
 
+with open('xmen.txt', 'a') as xmen_file:
+    xmen_file.write("professor xavier\n")
+
+# read, write, readplus and append are the four file modes.
