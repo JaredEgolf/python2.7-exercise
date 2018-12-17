@@ -17,12 +17,20 @@ args = parser.parse_args()
 
 #print(args.filename)
 
-with open(args.filename) as f:
-    lines = f.readlines()
-    lines.reverse()
+try:
+    f = open(args.filename)
+except IOError as err:
+    print("Error: file not found")
+else:
+    with f:
+        limit = args.limit
+        lines = f.readlines()
+        lines.reverse()
 
-    if args.limit:
-        lines = lines[:args.limit]
+        if args.limit:
+            lines = lines[:limit]
 
-    for line in lines:
-        print(line.strip()[::-1])
+        for line in lines:
+            print(line.strip()[::-1])
+finally:
+    print("\nEnd of program\n")
