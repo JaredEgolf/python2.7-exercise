@@ -11,6 +11,6 @@ raw_input("Please press Enter to continue...")
 stop_time = time.localtime()
 difftime = time.mktime(stop_time) - time.mktime(start_time)
 
-print("Timer stopped at %s" %s time.strftime("%X", stop_time))
+print("Timer stopped at %s" % time.strftime("%X", stop_time))
 print("Total time: %s seconds" % difftime)
 
