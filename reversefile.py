@@ -32,5 +32,5 @@ else:
 
         for line in lines:
             print(line.strip()[::-1])
-finally:
-    print("\nEnd of program\n")
+# finally:
+#    print("\nEnd of program\n")
