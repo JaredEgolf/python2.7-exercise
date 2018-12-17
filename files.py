@@ -1,6 +1,15 @@
 #!/bin/python
 
-xmen_file = open('xmen.txt')
+import os
+
+xmen_file = open('xmen.txt', 'r+')
+
+xmen_file.seek(-1, os.SEEK_END)
+
+xmen_file.write("\nBeast\n")
+xmen_file.write("Phoenix\n")
+
+xmen_file.seek(0, 0)
 
 print(xmen_file.read())
 # for line in xmen_file:
