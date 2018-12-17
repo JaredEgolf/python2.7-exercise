@@ -2,7 +2,7 @@
 
 import os
 
-stage = os.environ["STAGE"].upper()
+stage = (os.genenv("STAGE") or "development").upper()
 
 output = "We're running in %s" % stage
 
