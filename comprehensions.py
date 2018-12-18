@@ -10,10 +10,10 @@ snippet = args.snippet.lower()
 
 words = open('/usr/share/dict/words').readlines()
 
-numbers = [1,2, 3,4]
-print([x * x for x in numbers])
+#numbers = [1,2, 3,4]
+#print([x * x for x in numbers])
 
-print([word for word in words if snippet in word.lower()])
+print([word.strip() for word in words if snippet in word.lower()])
 
 
 #matches = []
