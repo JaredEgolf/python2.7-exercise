@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import requests
+from argparse import ArgumentParser
+import sys
+import json
+
+parser = ArgumentParser(description='Write a URL to a file')
+parser.add_argument('url', help='Path to the page to be written')
+parser.add_argument('filename', help='Name of the file to write')
+parser.add_argument('--content-type', '-c',
+                    default='html',
+                    choices=['html', 'json'],
+                    help='The content-type of the URL being requested')
+
+
+args = parser.parse_args()
+
+url = args.url
+filename = args.filename
+
+res = requests.get(url)
+
+if res.status_code >= 400:
+    print("Error code received: %s" % res.status_code)
+    sys.exit(1)
+
+if res.status_code != 200:
+    print("Error retreiving URL at %s" % url)
+    sys.exit(1)
+
+if args.content_type == 'json':
+    try:
+        content = json.dump(res.json())
+    except ValueError:
+        print("Error: Content is not JSON")
+        sys.exit(1)
+else:
+    content = res.text
+
+
+with open(filename, 'w') as f:
+    f.write(content.encode("UTF-8"))
+    print("Content written to '%s'" % filename)
